@@ -16,29 +16,23 @@
   <meta name="author" content="Nan-911">
   <meta name="keywords" content="">
   
-    <meta name="description" content="shiro反序列化漏洞复现Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。 一、shiro550利用条件知道aes加密的key且目标服务器含有可利用的攻击链。 原理： 　　在Shiro &lt;&#x3D; 1.2.4中，反序列化过程中所用到的AES加密的key是硬编码在源码中，当用户勾选RememberMe并登录成功，Shiro会将用户的cookie值序列化">
+    <meta name="description" content="简介FFUF：一款高效的FUZZ工具。 特性： 一个字，快！ 但是速度越快往往也越容易被ban。 安装地址：https:&#x2F;&#x2F;github.com&#x2F;ffuf&#x2F;ffuf&#x2F;releases  &#x2F;&#x2F; 可自行下载编译后的 也可以使用源代码进行编译 基本攻击目录扫描：-w 设置字典 -u 设置目标 也可以进行子域名枚举，更换字典与FUZZ位置即可，灵活运用。 这里我以Fuzz目录来做演示： 1ffuf.exe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shiro反序列化漏洞复现">
-<meta property="og:url" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="ffuf">
+<meta property="og:url" content="https://nan-918.github.io/2022/04/18/ffuf/index.html">
 <meta property="og:site_name" content="Nan-911">
-<meta property="og:description" content="shiro反序列化漏洞复现Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。 一、shiro550利用条件知道aes加密的key且目标服务器含有可利用的攻击链。 原理： 　　在Shiro &lt;&#x3D; 1.2.4中，反序列化过程中所用到的AES加密的key是硬编码在源码中，当用户勾选RememberMe并登录成功，Shiro会将用户的cookie值序列化">
+<meta property="og:description" content="简介FFUF：一款高效的FUZZ工具。 特性： 一个字，快！ 但是速度越快往往也越容易被ban。 安装地址：https:&#x2F;&#x2F;github.com&#x2F;ffuf&#x2F;ffuf&#x2F;releases  &#x2F;&#x2F; 可自行下载编译后的 也可以使用源代码进行编译 基本攻击目录扫描：-w 设置字典 -u 设置目标 也可以进行子域名枚举，更换字典与FUZZ位置即可，灵活运用。 这里我以Fuzz目录来做演示： 1ffuf.exe">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/clipboard.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906154425847.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906155015344.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906193607965.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906194501623.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906194057296.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906194749015.png">
-<meta property="article:published_time" content="2022-04-14T15:30:00.000Z">
-<meta property="article:modified_time" content="2022-04-27T04:24:35.526Z">
+<meta property="og:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418171554921.png">
+<meta property="og:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418182952956.png">
+<meta property="article:published_time" content="2022-04-18T08:58:59.000Z">
+<meta property="article:modified_time" content="2022-04-27T06:19:28.798Z">
 <meta property="article:author" content="Nan-911">
-<meta property="article:tag" content="漏洞复现">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://nan-918.github.io/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/clipboard.png">
+<meta name="twitter:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418171554921.png">
   
   
-  <title>shiro反序列化漏洞复现 - Nan-911</title>
+  <title>ffuf - Nan-911</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="shiro反序列化漏洞复现"></span>
+            <span id="subtitle" data-typed-text="ffuf"></span>
           
         </div>
 
@@ -206,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-14 23:30" pubdate>
-          2022年4月14日 晚上
+        <time datetime="2022-04-18 16:58" pubdate>
+          2022年4月18日 下午
         </time>
       </span>
     
@@ -218,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          922 字
+          329 字
         
       </span>
     
@@ -229,7 +223,7 @@
         
         
         
-          8 分钟
+          3 分钟
         
       </span>
     
@@ -275,45 +269,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">shiro反序列化漏洞复现</h1>
+            <h1 style="display: none">ffuf</h1>
             
             <div class="markdown-body">
               
-              <h1 id="shiro反序列化漏洞复现"><a href="#shiro反序列化漏洞复现" class="headerlink" title="shiro反序列化漏洞复现"></a>shiro反序列化漏洞复现</h1><p>Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。</p>
-<h2 id="一、shiro550利用条件"><a href="#一、shiro550利用条件" class="headerlink" title="一、shiro550利用条件"></a>一、shiro550利用条件</h2><p>知道aes加密的key且目标服务器含有可利用的攻击链。</p>
-<p><strong>原理：</strong></p>
-<p>　　在Shiro &lt;= 1.2.4中，反序列化过程中所用到的AES加密的key是硬编码在源码中，当用户勾选RememberMe并登录成功，Shiro会将用户的cookie值序列化，AES加密，接着base64编码后存储在cookie的rememberMe字段中.<br>　　服务端收到登录请求后，会对cookie的rememberMe字段的值进行base64解码，接着进行AES解密，然后反序列化。由于AES加密是对称式加密(key既能加密数据也能解密数据)，所以当攻击者知道了AES key后，就能够构造恶意的rememberMe cookie值从而触发反序列化漏洞。</p>
-<p><strong>在服务端接收cookie值时，按照如下步骤来解析处理：</strong></p>
-<p>获取RememberMe的值 —&gt; Base64解密 —&gt; ASE解密 –&gt; 反序列化</p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">1</span>.检索<span class="hljs-comment">RememberMe cookie 的值</span><br><span class="hljs-number">2</span>.Base64解码<br><span class="hljs-number">3</span>.使用AES解密(加密密钥硬编码)<br><span class="hljs-number">4</span>.进行反序列化操作（未作过滤处理）<br><span class="hljs-number">5</span>.在调用反序列化时未进行任何过滤，导致可以触发远程代码执行漏洞。<br></code></pre></td></tr></table></figure>
+              <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>FFUF：一款高效的FUZZ工具。</p>
+<p><strong>特性：</strong></p>
+<p>一个字，快！</p>
+<p>但是速度越快往往也越容易被ban。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>地址：<a target="_blank" rel="noopener" href="https://github.com/ffuf/ffuf/releases">https://github.com/ffuf/ffuf/releases</a>  // 可自行下载编译后的 也可以使用源代码进行编译</p>
+<h3 id="基本攻击"><a href="#基本攻击" class="headerlink" title="基本攻击"></a>基本攻击</h3><h4 id="目录扫描："><a href="#目录扫描：" class="headerlink" title="目录扫描："></a>目录扫描：</h4><p><code>-w </code>设置字典 <code>-u</code> 设置目标</p>
+<p>也可以进行子域名枚举，更换字典与FUZZ位置即可，灵活运用。</p>
+<p>这里我以Fuzz目录来做演示：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">ffuf.exe -c -w dict\php.txt -u http://<span class="hljs-number">192.168</span>.<span class="hljs-number">0.201</span>/FUZZ<br></code></pre></td></tr></table></figure>
 
-<p><strong>影响版本:1.2.4以下</strong></p>
-<p>解决payload过长的方式：</p>
-<ol>
-<li>使用urlclassloader加载远程字节码</li>
-<li>将字节码放在post的body中,恶意类实现加载body中的字节码即可.</li>
-</ol>
-<h2 id="二、漏-洞-复-现"><a href="#二、漏-洞-复-现" class="headerlink" title="二、漏 洞 复 现"></a>二、漏 洞 复 现</h2><p>使用vulhub靶场进行复现，启动漏洞环境：</p>
-<p>进入shiro漏洞目录，然后执行</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span> CVE-<span class="hljs-number">2016</span>-<span class="hljs-number">4437</span><br><span class="hljs-attribute">sudo</span> docker-compose up -d<br></code></pre></td></tr></table></figure>
+<p><img src="/2022/04/18/ffuf/image-20220418171554921.png" srcset="/img/loading.gif" lazyload alt="image-20220418171554921"></p>
+<p>多层目录扫描：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">ffuf.exe -c -w dict\php.txt:FUZZ1 -w dict\dir.txt:FUZZ2 -u http://<span class="hljs-number">192.168</span>.<span class="hljs-number">0.201</span>/FUZZ1/FUZZ2<br></code></pre></td></tr></table></figure>
 
-<p>然后等待一会儿就好~比如像下图这样</p>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/clipboard.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>访问<a target="_blank" rel="noopener" href="http://192.168.56.132:8080/%E6%AD%A3%E5%B8%B8%E7%99%BB%E9%99%86">http://192.168.56.132:8080/正常登陆</a></p>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906154425847.png" srcset="/img/loading.gif" lazyload alt="image-20210906154425847"></p>
-<p>使用burp进行抓包，查看返回包</p>
-<ul>
-<li>响应包中出现&lt;rememberMe=deleteMe&gt;可以用来大概判断是否使用了Shiro</li>
-</ul>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906155015344.png" srcset="/img/loading.gif" lazyload alt="image-20210906155015344"></p>
-<p>可以使用工具尝试爆破一下密钥以及利用链，如果可爆破出密钥及利用链，则可以命令执行，以及注入内存马。</p>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906193607965.png" srcset="/img/loading.gif" lazyload alt="image-20210906193607965"></p>
-<p>vps监听本地端口</p>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906194501623.png" srcset="/img/loading.gif" lazyload alt="image-20210906194501623"></p>
-<p>利用工具可以进行反弹shell</p>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906194057296.png" srcset="/img/loading.gif" lazyload></p>
-<p>反弹成功</p>
-<p><img src="/2022/04/14/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20210906194749015.png" srcset="/img/loading.gif" lazyload alt="image-20210906194749015"></p>
+<p><img src="/2022/04/18/ffuf/image-20220418182952956.png" srcset="/img/loading.gif" lazyload alt="image-20220418182952956"></p>
+<p>待更新………………</p>
 
               
             </div>
@@ -336,7 +311,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-chain-item">漏洞复现</a>
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/Tools/" class="category-chain-item">Tools</a>
   
   
 
@@ -350,13 +325,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">#漏洞复现</a>
-      
-    </div>
-  
 </div>
 
 
@@ -365,8 +333,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>shiro反序列化漏洞复现</div>
-      <div>https://nan-918.github.io/2022/04/14/shiro反序列化漏洞/</div>
+      <div>ffuf</div>
+      <div>https://nan-918.github.io/2022/04/18/ffuf/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月14日</div>
+          <div>2022年4月18日</div>
         </div>
       
       
@@ -408,15 +376,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/15/%E5%A4%B1%E7%9C%A0/" title="失眠">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">失眠</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/04/15/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93-2021-2022/" title="实习总结-2021-2022">
+                        <span class="hidden-mobile">实习总结-2021-2022</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
