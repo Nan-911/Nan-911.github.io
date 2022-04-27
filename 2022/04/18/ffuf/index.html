@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418171554921.png">
 <meta property="og:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418182952956.png">
 <meta property="article:published_time" content="2022-04-18T08:58:59.000Z">
-<meta property="article:modified_time" content="2022-04-27T06:19:28.798Z">
+<meta property="article:modified_time" content="2022-04-27T16:39:24.635Z">
 <meta property="article:author" content="Nan-911">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418171554921.png">
@@ -295,11 +295,11 @@
 <p>这里我以Fuzz目录来做演示：</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">ffuf.exe -c -w dict\php.txt -u http://<span class="hljs-number">192.168</span>.<span class="hljs-number">0.201</span>/FUZZ<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/04/18/ffuf/image-20220418171554921.png" srcset="/img/loading.gif" lazyload alt="image-20220418171554921"></p>
+<p><img src="/2022/04/18/ffuf/image-20220418171554921.png" srcset="/img/loading.gif" lazyload></p>
 <p>多层目录扫描：</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">ffuf.exe -c -w dict\php.txt:FUZZ1 -w dict\dir.txt:FUZZ2 -u http://<span class="hljs-number">192.168</span>.<span class="hljs-number">0.201</span>/FUZZ1/FUZZ2<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/04/18/ffuf/image-20220418182952956.png" srcset="/img/loading.gif" lazyload alt="image-20220418182952956"></p>
+<p><img src="/2022/04/18/ffuf/image-20220418182952956.png" srcset="/img/loading.gif" lazyload></p>
 <p>待更新………………</p>
 
               
